@@ -7,7 +7,7 @@ try {
 
 $query  = $bdd->query('SELECT * FROM place');
 
-header('Content-Type: application/json');
-echo json_encode($query->fetchAll(), true);
+header('Content-Type: application/json'); // ce qui va faire comprendre au navigateur que c'est ficher json
+echo json_encode($query->fetchAll(), true); // transforme un array en json
 
 ?>

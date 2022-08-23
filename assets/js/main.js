@@ -43,13 +43,13 @@ L.marker([51.5, -0.09]).addTo(map)
     .openPopup();
 */
 
-    fetch('api/list.php')
-    .then(response => {
-      return response.json();
+    fetch('api/list.php') // on fait un fetch pour faire appel à lapi 
+    .then(response => { // et recupere la reponse json
+      return response.json(); 
     })
     .then(data => {
 
-      data.map(place => {
+      data.map(place => { //on fait une boucle qui recupere un element d'un objet pour créer des markers
         L.marker([place.lat, place.lng])
         .bindPopup(`${place.name}<br>${place.adress}`)
         .addTo(map)
