@@ -68,6 +68,25 @@ nav ul li:hover {
     background-color: var(--primary-color);
     transition: background-color 350ms ease-in-out;
 }
+/* pop-up*/
+
+.favorite-button{
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+}
+
+.favorite-button :hover{
+    color: rgb(255, 205, 3)
+}
+
+.image-popup{
+    width: 100%;
+    margin-top: 5px;
+}
 
 /* Footer */
 footer {

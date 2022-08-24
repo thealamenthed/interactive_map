@@ -1,5 +1,5 @@
-<?php 
-    include('./parts/head.php'); 
+<?php
+include('./parts/head.php');
 ?>
 
 <body data-barba="wrapper">
@@ -39,4 +39,5 @@
         <?php include('./parts/footer.php'); ?>
     </footer>
 </body>
+
 </html>
