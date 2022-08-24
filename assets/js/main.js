@@ -31,7 +31,7 @@ barba.init({
 
 
 // Leaflet.js // -------------------------------------------------------------
-let map = L.map('map').setView([48.864716, 2.349014], 6)
+let map = L.map('map').setView([48.864716, 2.349014], 12)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
