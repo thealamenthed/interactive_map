@@ -1,3 +1,4 @@
+
 // Add header and footer content // ------------------------------------------
 /*
 fetch("../parts/header.html")
@@ -43,10 +44,13 @@ L.marker([51.5, -0.09]).addTo(map)
 fetch("api/list.php") // on fait un fetch pour faire appel à lapi
   .then((response) => {
     // et recupere la reponse json
+  
     return response.json();
   })
   .then((data) => {
+    console.log(data);
     data.map((place) => {
+      console.log(place);
       //on fait une boucle qui recupere un element d'un objet pour créer des markers
       L.marker([place.lat, place.lng])
         .bindPopup(
@@ -76,6 +80,26 @@ function onStarClick() {
   
 }
 map.on("click", onMapClick);
+
+fetch("api/data.php") // 
+  .then((response) => {
+    // et recupere la reponse json
+    console.log(response)
+    return response.json();
+  })
+  .then((data) => {
+   getCreat
+      //on fait une boucle qui recupere un element d'un objet pour créer des markers
+      ([data.lat, data.lng])
+        .bindPopup(
+          `${data.name}  
+          ${data.img}
+          ${data.category}
+          ${data.adress}<br><img class="image-popup" src="${data.img}"/>`
+        )
+        .addTo();
+    });
+  
 
 // list // -------------------------------------------------------------------
 class Card {
