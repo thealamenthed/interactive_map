@@ -19,25 +19,36 @@ $query  = $bdd->query('SELECT * FROM category');
     <header>
         <?php include('./parts/header.php'); ?>
     </header>
-
+    
     <!-- Main content of the page. The best way, use this HTML tag "main" -->
+
     <h1 class="home-title">Bienvenue sur notre site : Nos adresses gourmandes à Paris!</h1>
     <main id="homepage" data-barba="container" data-barba-namespace="home" data-category="<?= $category ?>">
+
         <section id="mappy" class="app_view flex flex-center">
             <div id="map"></div>
         </section>
         <aside class="flex flex-column">
-            <h3>Qu'est ce qui vous ferez plaisir?</h3>
-            <p>Lorem ipsum dolor sit amet elit.</p>
-            <ul>
-                <?php foreach ($query as $item) : ?>
-                    <li class="">
-                        <img src="https://via.placeholder.com/300x50" alt="Name of the starred place" width="100%">
-                        <a href="index.php?cat=<?= $item['id'] ?>">&rightarrow; <?= $item['name'] ?></a>
-                    </li>
-                <?php endforeach ?>
+
+            <h2>Qu'est ce qui vous ferez plaisir?</h2>
+            <button>Pâtisserie</button>
+            <button>Boulangerie</button>
+            <button>Crêperie</button>
+            <button id= "getAll" onclick= myFunction()>Voir tout</button>
+            <ul id="allplace"> 
+                <li class="ash">
+                    <img src="https://via.placeholder.com/300x50" alt="Name of the starred place" width="100%">
+                </li>
+                <li class="">
+                    <img src="https://via.placeholder.com/300x50" alt="Name of the starred place" width="100%">
+                </li>
+                <li class="">
+                    <img src="https://via.placeholder.com/300x50" alt="Name of the starred place" width="100%">
+                </li>
             </ul>
         </aside>
+     </div>
+     
     </main>
 
     <!-- Footer added automatically by php -->

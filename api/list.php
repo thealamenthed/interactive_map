@@ -2,8 +2,9 @@
 
 $cat = isset($_GET['cat']);
 
+
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=project9;charset=utf8', 'root', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=project9;charset=utf8', 'root', '');
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }

@@ -15,14 +15,10 @@
   --alternative-color: #b456ae;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 500;
+h1,h2, h3, h4, h5, h6 {
+    font-weight: 500;
 }
+
 .flex {
   display: flex;
 }
@@ -305,9 +301,13 @@ footer {
   right: 0;
   font-size: 5em;
 }
+
 #homepage {
   display: grid;
   grid-template-columns: 5fr 2.5fr;
+}
+#homepage h1{
+    
 }
 #homepage aside {
   padding: 0.5em;
