@@ -263,7 +263,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: #d5ccca;
   font-size: 0.75em;
 }
 .footer-starred{
@@ -296,7 +296,7 @@ footer {
   height: 35rem;
   background-attachment: fixed;
   color: #ffffff;
-  padding-top: 195px;
+  padding-top: 200px;
 }
 
 .app_view_name {
@@ -369,8 +369,7 @@ footer {
     font-size: 0.75em;
   }
   nav {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+/*     grid-template-columns: 1fr; */    grid-template-rows: 1fr 1fr;
     height: 120px;
   }
   nav ul {

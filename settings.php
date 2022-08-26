@@ -1,30 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="https://unpkg.com/@barba/core"></script>
-    <script src="./assets/js/main.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
-</head>
+<?phpif (!isset($_SESSION['user'])) {
+    header('location: account.php');
+}
+
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=project9;charset=utf8', 'root', 'root');
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+$query  = $bdd->query('SELECT * FROM place');
+
+?>
+<?php include('./parts/head.php'); ?>
 <body>
 
-    <!-- Header added automatically by JS -->
-    <header></header>
+    <!-- Header added automatically by php -->
+    <header>
+        <?php include('./parts/header.php'); ?>
+    </header>
+
+
+
 
     <!-- Main content of the page. The best way, use this HTML tag "main" -->
     <main>
-        <section id="settings" class="app_view flex flex-center">
-            <p class="app_view_name">#settings</p>
-        </section>
+    <div class="container">
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class=""> Mes recettes</h2>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            <th scope="col">categorie</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($query as $item) : ?>
+            <tr>
+                <th scope="row"><?= $item['id'] ?></th>
+                <td><?= $item['name'] ?></td>
+                <td><?= $item['adress'] ?></td>
+                <td><?= $item['img'] ?></td>
+                <td>
+                    <a href="recipe-edit.php?id=<?= $item['id'] ?>"><i class="bi bi-pencil-square"></i></a>
+                    <a href="recipe-delete.php?id=<?= $item['id'] ?>"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+</div>
     </main>
 
-    <!-- Footer added automatically by JS -->
-    <footer></footer>
+
+
+
+    <!-- Footer added automatically by php -->
+    <footer>
+        <?php include('./parts/footer.php'); ?>
+    </footer>
 </body>
 </html>

@@ -77,7 +77,7 @@ function onMapClick(e) {
 
 // favorite // -------------------------------------------------------------------
 
-function onStarClick() {
+/* function onStarClick() {
   let placeId = document.querySelector(".favorite-button").dataset.id;
 
   let formdata = new FormData();
@@ -103,7 +103,7 @@ document.getElementById("map").addEventListener("click", (e) => {
   console.log(e.target.className.baseVal);
 });
 
-map.on("click", onMapClick);
+map.on("click", onMapClick); */
 
 // list // -------------------------------------------------------------------
 class Card {
