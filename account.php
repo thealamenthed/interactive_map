@@ -1,31 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="https://unpkg.com/@barba/core"></script>
-    <script src="./assets/js/main.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
-</head>
+<?php
+include('./parts/head.php');
+?>
+
 <body>
 
-    <!-- Header added automatically by JS -->
-    <header></header>
+
+
+
 
     <!-- Main content of the page. The best way, use this HTML tag "main" -->
     <main>
-        <section id="account" class="app_view flex flex-center">
-            <p class="app_view_name">#account</p>
-            <img src="" alt="">
-        </section>
+
+        <body class="login">
+
+
+            <div class="container" id="container">
+                <div class="form-container log-in-container">
+                    <form method="POST" action="login.php">
+                        <a href="index.php"><img class="logo-img" src="./assets/img/logo.png" alt="logo"></a>
+                        <input type="text" id="user_name" name="user_name" class="form-control" placeholder="nom" />
+                        <input type="email" id="email" name="email" class="form-control" placeholder="email" />
+                        <input type="password" id="form2Example22" name="password" class="form-control" placeholder="mot de passe" />
+                        <!-- <a href="#">Forgot your password?</a> -->
+
+                        <!-- si le paramètre (url) login existe, et qu'il est égale a already alors affiche moi echo -->
+                        <?php
+                        if (isset($_GET['login_err']) && $_GET['login_err'] === 'already') {
+                            echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                        }
+                        ?>
+
+                        <button type="submit" class="btn-login">Connexion</button>
+                    </form>
+                </div>
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-right">
+                            <h1 class="connexion-title">Yummy Bakery</h1>
+                            <p>The best places to eat!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     </main>
 
-    <!-- Footer added automatically by JS -->
-    <footer></footer>
 </body>
+
 </html>
