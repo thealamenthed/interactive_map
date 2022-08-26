@@ -1,3 +1,5 @@
+
+
 <?phpif (!isset($_SESSION['user'])) {
     header('location: account.php');
 }
@@ -55,6 +57,7 @@ $query  = $bdd->query('SELECT * FROM place');
     </tbody>
 </table>
 </div>
+
     </main>
 
 

@@ -1,3 +1,4 @@
+
 // Add header and footer content // ------------------------------------------
 /*
 fetch("../parts/header.html")
@@ -45,10 +46,13 @@ L.marker([51.5, -0.09]).addTo(map)
 fetch("api/list.php") // on fait un fetch pour faire appel à lapi
   .then((response) => {
     // et recupere la reponse json
+  
     return response.json();
   })
   .then((data) => {
+    console.log(data);
     data.map((place) => {
+      console.log(place);
       //on fait une boucle qui recupere un element d'un objet pour créer des markers
       L.marker([place.lat, place.lng])
         .bindPopup(
@@ -98,9 +102,11 @@ function onMapClick(e) {
     .catch((error) => console.log("error", error));
 }
 
+
 document.getElementById("map").addEventListener("click", (e) => {
   if (e.target && e.target.className.baseVal == "favorite-button") {
     onStarClick();
+
   }
   console.log(e.target.className.baseVal);
 });
@@ -135,31 +141,8 @@ fetch("api/place.php")
 
 
 
-
-
-
-
     console.log(plop)
   });
   console.log('Yay'),
   document.getElementsByClassName("ash").innerHTML = "allplace";
 }
-
-// .then((data) => {
-//   data.map((place) => {
-//     .setContent(
-//       ${place.name}, ${place.adress}
-    
-
-   
-
-//   });
-// });
-
-// class Card {
-//   constructor(title, text, img) {
-//     this.title = title;
-//     this.text = text;
-//     this.img = img;
-//   }
-// }
