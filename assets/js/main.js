@@ -88,8 +88,11 @@ fetch("api/data.php") //
     return response.json();
   })
   .then((data) => {
-   getCreat
+    console.log(data);
+
+    result.append(ul);
       //on fait une boucle qui recupere un element d'un objet pour créer des markers
+      let creation = document.getElementById('div1');
       ([data.lat, data.lng])
         .bindPopup(
           `${data.name}  
@@ -98,8 +101,39 @@ fetch("api/data.php") //
           ${data.adress}<br><img class="image-popup" src="${data.img}"/>`
         )
         .addTo();
-    });
+    })
+    .then((data) => {
+      console.log(data);
   
+      result.append(ul);
+        //on fait une boucle qui recupere un element d'un objet pour créer des markers
+        let creation = document.getElementById('div1');
+        ([data.lat, data.lng])
+          .bindPopup(
+            `${data.name}  
+            ${data.img}
+            ${data.category}
+            ${data.adress}<br><img class="image-popup" src="${data.img}"/>`
+          )
+          .addTo();
+      });
+      const data = { username: 'example' };
+
+      fetch('api/data.php', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    
 
 // list // -------------------------------------------------------------------
 class Card {
@@ -108,4 +142,26 @@ class Card {
     this.text = text;
     this.img = img;
   }
+}
+let marker = L.marker([48.8534, 2.3488]).addTo(map);
+        let clickMarker;
+let form = "<form action='#' method='post'>"+
+                  "<input type='text' id='name' name= 'name' placeholder='lieu'>"+
+                  "<br><br><input type='text' id='type' name= 'name' placeholder='genre'>"+
+                  "<br><br><textarea id='msg' name='message' placeholder='Commentaire'></textarea>"+
+                  "<br><input id='lon' name= 'longitude' placeholder='longitude' type='hidden'>"+
+                  "<br><input id='lat' name= 'latitude' placeholder='latitude' type='hidden'>"+
+                  "<button>Envoyer</button>"+
+                  "</form>";
+
+
+function onMapClick(e) {
+
+  if (clickMarker) {
+      map.removeLayer(clickMarker);
+  }
+   clickMarker = new L.marker(e.latlng, {draggable: true}).addTo(map);
+   clickMarker.on('dragend', function(e) {
+   }).bindPopup(form).openPopup();
+      
 }

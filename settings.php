@@ -35,19 +35,25 @@
        
         </section>
         <section> <!--formulaire de modification des admins-->
-        <form action="accueil.php?id=<?php echo $ok['id'] ?>" method="post" style="padding:150px">
+        <form id="formcrea" action="index.php" method="post" style="padding:150px">
             <h2>Formulaire de modification d'article</h2>
-            <label for="id">ID</label>
-            <input type="text" name="idvisible" value="<?php echo $ok['id'];?>" disabled>
-            <input type="hidden" name="id" value="<?php echo $ok['id'];?>">
-            <label for="titre">titre</label>
-            <input type="text" name="titre" value="<?php echo $ok['titre'];?>">
-            <label for="img">image</label>
-            <input type="text" name="email" value="<?php echo $ok['image'];?>">
-            <label for="text">contenu</label>
-            <input type="contenu" name="password" value="<?php echo $ok['contenu'];?>">
-            <label for="date">date</label>
-            <input type="date" name="date" value="<?php echo $ok['date'];?>">
+            <label id="nom" for="id">ID</label>
+            <input id="" type="text" name="idvisible" value="" disabled>
+
+            <input id="" type="hidden" name="id" value="">
+
+            <label id="lieu" for="titre">titre</label>
+            <input id="nom" type="text" name="titre" value="">
+
+            <label  id="nom"for="img">image</label>
+            <input id="nom" type="text" name="email" value="">
+
+            <label id="nom" for="text">contenu</label>
+            <input id="nom" type="contenu" name="" value="">
+
+            <label id="adress" for="adresse">date</label>
+            <input id="adresse" type="date" name="date" value="">
+
             <button type="submit" name="modifier">Modifier</button>
         </form>
 </section>
