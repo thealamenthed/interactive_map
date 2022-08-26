@@ -1,6 +1,17 @@
 <?php
-include('./parts/head.php');
+
+$category = isset($_GET['cat']);
+
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=project9;charset=utf8', 'root', 'root');
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+
+$query  = $bdd->query('SELECT * FROM category');
 ?>
+
+<?php include('./parts/head.php'); ?>
 
 <body data-barba="wrapper">
 
@@ -10,13 +21,15 @@ include('./parts/head.php');
     </header>
     
     <!-- Main content of the page. The best way, use this HTML tag "main" -->
-    <main>
-        <h1>Bienvenue sur notre site : Nos adresses gourmandes à Paris!</h1>
-        <div id="homepage" data-barba="container" data-barba-namespace="home">
+
+    <h1 class="home-title">Bienvenue sur notre site : Nos adresses gourmandes à Paris!</h1>
+    <main id="homepage" data-barba="container" data-barba-namespace="home" data-category="<?= $category ?>">
+
         <section id="mappy" class="app_view flex flex-center">
             <div id="map"></div>
         </section>
         <aside class="flex flex-column">
+
             <h2>Qu'est ce qui vous ferez plaisir?</h2>
             <button>Pâtisserie</button>
             <button>Boulangerie</button>

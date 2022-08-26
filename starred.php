@@ -1,79 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starred</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="https://unpkg.com/@barba/core"></script>
-    <script src="./assets/js/main.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@200;300&display=swap" rel="stylesheet">
-</head>
+<?php
+include('./parts/head.php');
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=project9;charset=utf8', 'root', 'root');
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+
+$sql = 'SELECT p.* FROM favorites AS f 
+    INNER JOIN place AS p 
+    ON p.id = f.fk_place_id
+    WHERE f.fk_user_id = :userId;';
+$statement = $pdo->prepare($sql);
+
+$result = $statement->execute(['userId' => 1]);
+
+//var_dump($statement->fetchAll());
+?>
+
 <body>
 
     <!-- Header added automatically by JS -->
-    <header></header>
+    <header>
+        <?php include('./parts/header.php'); ?>
+    </header>
 
     <!-- Main content of the page. The best way, use this HTML tag "main" -->
     <main id="starred">
+        <h1 class="favorite-title">My best places</h1>
         <section class="app_view flex flex-center flex-column">
             <ul class="starred_list flex flex-center flex-wrap">
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
-                <li class="starred_item">
-                    <img src="https://via.placeholder.com/200x85" alt="Name of the starred place">
-                    <h4>Name of the place</h4>
-                    <p>Some informations to display about the place.</p>
-                    <a href="#">Optionnal link</a>
-                </li>
+                <?php foreach ($statement as $item) : ?>
+                    <li class="starred_item qsdqsdq">
+                        <img src="<?= $item['img']; ?>" alt="Name of the starred place">
+                        <h4><?= $item['name']; ?></h4>
+                        <p><?= $item['adress']; ?></p>
+                    </li>
+                <?php endforeach ?>
             </ul>
         </section>
     </main>
 
-    <!-- Footer added automatically by JS -->
-    <footer></footer>
+    <!-- Footer added automatically by php -->
+    <footer class="footer-starred">
+        <?php include('./parts/footer.php'); ?>
+    </footer>
 </body>
+
 </html>
